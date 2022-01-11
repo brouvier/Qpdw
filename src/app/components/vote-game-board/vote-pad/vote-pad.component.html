@@ -1,0 +1,33 @@
+<div class="vertical-center" *ngIf="currentTeam === undefined">
+    <div class="container">
+        <div class="alert alert-primary d-flex my-4" role="alert">
+            <h1 class="w-100">Choisi une équipe</h1>
+        </div>
+
+        <i class="material-icons d-flex mb-2 {{team.value.color}}" *ngFor="let team of teams | keyvalue"
+            style="font-size: 400%" (click)="currentTeam = team">
+            {{team.value.icon}}
+        </i>
+
+    </div>
+</div>
+
+<div class="container" *ngIf="currentTeam !== undefined">
+
+    <div class="btn-group-vertical position-absolute top-50 start-50 translate-middle" role="group">
+        <button type="button" (click)="voteTrue()" [disabled]="buttonDisable"
+            class="btn btn-lg btn-outline-success active ">
+            <i class="material-icons" style="font-size: 25vh">thumb_up</i>
+        </button>
+        <button type="button" (click)="voteFalse()" [disabled]="buttonDisable"
+            class="btn btn-lg btn-outline-danger active">
+            <i class="material-icons" style="font-size: 25vh">thumb_down</i>
+        </button>
+    </div>
+
+    <i class="material-icons position-absolute bottom-0 end-0 mb-1 text-{{currentTeam.value.buzzerColor}}"
+        (click)="currentTeam = undefined" style="font-size: 10vh">
+        {{currentTeam.value.icon}}
+    </i>
+
+</div>

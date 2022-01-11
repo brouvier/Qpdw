@@ -1,0 +1,65 @@
+<div class="vertical-center">
+    <div class="container">
+        <div class="row m-3" *ngFor="let team of teams | keyvalue">
+
+            <!-- Progess bar -->
+            <div class="col-11">
+                <div class="progress" style="height:100%">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated {{team.value.color}}"
+                        [style.width.%]="team.value.score">
+                        <h1>{{team.value.message}}</h1>
+                    </div>
+                    <i class="material-icons {{team.value.color}}" style="font-size: 750%">{{team.value.icon}}</i>
+                </div>
+            </div>
+
+            <!-- Star -->
+            <div class="col-1 align-self-center">
+                <div class="btn-group btn-group-justified">
+                    <button type="button" class="btn btn-outline" disabled>
+                        <i class="material-icons align-self-center {{team.value.starColor}}"
+                            style="font-size: 400%">{{team.value.star}}</i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="position-absolute m-2 bottom-0 end-0" *ngIf="!production">
+    <pre>currentParty : {{currentParty | json}}</pre>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="timerModal" role="dialog" data-bs-backdrop="static" aria-hidden="true"
+    style="margin: 20vh auto auto">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title"><i class="material-icons align-middle" style="font-size: 120%">timer</i>Timer
+                </h3>
+            </div>
+            <div class="modal-body" style="height:40vh; display: flex;">
+                <p class="text-center" style="font-size: 750%; font-family: Badabb; margin: auto">{{currentParty.timerValue}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="teamModal" role="dialog" data-bs-backdrop="static" aria-hidden="true"
+    style="margin: 20vh auto auto">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title"><i class="material-icons align-middle"
+                        style="font-size: 120%">emoji_objects</i>Équipe</h3>
+            </div>
+            <div class="modal-body d-flex justify-content-center" style="min-height:40vh;">
+
+                <i class="material-icons text-{{currentParty.currentTeamBuzz?.buzzerColor}} m-3" style="font-size: 40vh">
+                    {{currentParty.currentTeamBuzz?.icon}}</i>
+
+            </div>
+        </div>
+    </div>
+</div>

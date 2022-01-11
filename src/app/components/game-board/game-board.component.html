@@ -1,0 +1,62 @@
+<div class="vertical-center">
+    <div class="container">
+        <div class="row m-3" *ngFor="let team of teams">
+
+            <!-- Gestion des points -->
+            <div class="col-1">
+                <div class="btn-group btn-group-justified">
+                    <div class="btn-group-vertical">
+                        <button type="button" class="btn btn-success" (click)="plus(team)">
+                            <i class="material-icons">thumb_up</i></button>
+                        <button type="button" class="btn btn-danger" (click)="moins(team)">
+                            <i class="material-icons">thumb_down</i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progess bar -->
+            <div class="col-10">
+                <div class="progress" style="height:100%">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated {{team.color}}"
+                        [style.width.%]="team.score">
+                        <h1>{{team.message}}</h1>
+                    </div>
+                    <i class="material-icons {{team.color}}" style="font-size: 750%">{{team.icon}}</i>
+                </div>
+            </div>
+
+            <!-- Star -->
+            <div class="col-1 align-self-center">
+                <div class="btn-group btn-group-justified">
+                    <button type="button" class="btn btn-outline" (click)="final(team)">
+                        <i class="material-icons align-self-center {{team.starColor}}"
+                            style="font-size: 400%">{{team.star}}</i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Commandes du timer -->
+<i class="material-icons position-absolute bottom-0 start-0 text-primary mb-2" style="font-size: 750%"
+    *ngIf="timerRunning == false" data-bs-toggle="modal" data-bs-target="#timerModal"
+    (click)="startTimer()">play_circle_fill</i>
+<i class="material-icons position-absolute bottom-0 start-0 text-success mb-2" style="font-size: 750%; z-index:9000;"
+    *ngIf="timerRunning" (click)="stopTimer()">pause_circle_filled</i>
+
+<!-- Modal -->
+<div class="modal fade" id="timerModal" role="dialog" data-bs-backdrop="static" aria-hidden="true"
+    style="margin: 20vh auto auto">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title"><i class="material-icons align-middle" style="font-size: 120%">timer</i>Timer</h3>
+            </div>
+            <div class="modal-body" style="height:40vh; display: flex;">
+                <p class="text-center" style="font-size: 750%; font-family: Badabb; margin: auto">{{timerValue}}</p>
+            </div>
+        </div>
+    </div>
+</div>

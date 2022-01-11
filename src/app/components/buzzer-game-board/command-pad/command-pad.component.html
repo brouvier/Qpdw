@@ -1,0 +1,36 @@
+<div class="row m-1">
+    <h1>Timer</h1>
+    <!-- Commandes du timer -->
+    <div class="btn-group btn-group-justified">
+        <button type="button" class="btn btn-primary" (click)="stackPlay()" [disabled]="allButtonDisable">
+            <i class="material-icons" style="font-size: 250%">play_circle_fill</i>
+        </button>
+        <button type="button" class="btn btn-success" (click)="stackStop()" [disabled]="allButtonDisable">
+            <i class="material-icons" style="font-size: 250%;">pause_circle_filled</i>
+        </button>
+    </div>
+</div>
+
+<div class="row m-1 mb-0">
+    <h1>Équipes</h1>
+</div>
+
+<div class="row m-1 mt-0" *ngFor="let team of teams | keyvalue">
+
+    <div class="col-4">
+        <i class="material-icons align-self-center {{team.value.color}}" style="font-size: 400%">{{team.value.icon}}</i>
+    </div>
+    <!-- Gestion des points -->
+    <div class="col-8">
+        <div class="btn-group btn-group-justified">
+                <button type="button" class="btn btn-success" (click)="stackPlus(team.key)" [disabled]="allButtonDisable">
+                    <i class="material-icons" style="font-size: 250%">thumb_up</i></button>
+                <button type="button" class="btn btn-danger" (click)="stackMoins(team.key)" [disabled]="allButtonDisable">
+                    <i class="material-icons" style="font-size: 250%">thumb_down</i></button>
+                <button type="button" class="btn btn-warning" (click)="stackVictory(team.key)" [disabled]="allButtonDisable">
+                    <i class="material-icons {{team.value.starColor}}" style="font-size: 250%">{{team.value.star}}</i>
+                </button>
+        </div>
+    </div>
+
+</div>

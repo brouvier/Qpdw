@@ -1,0 +1,13 @@
+{
+    "name": "Questions pour des Winners",
+    "short_name": "QpdW",
+    "start_url": "../",
+    "display": "standalone",
+    "background_color": "#fff",
+    "description": "Jeu de questions réponses",
+    "icons": [
+      {
+        "src": "Winner.png",
+        "sizes": "178x175"
+      }]
+  }
